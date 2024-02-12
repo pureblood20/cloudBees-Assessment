@@ -5,13 +5,8 @@ import Typography from "@mui/material/Typography";
 
 const url = "https://api.github.com/users";
 export const loader = async () => {
-  const response = await axios.get(url);
-  const userData = await Promise.all(
-    response.data.map(async (user) => {
-      const userDetails = await axios.get(url + `/${user.login}`);
-      return userDetails;
-    })
-  );
+  const userData = await axios.get(url);
+
   return { userData };
 };
 

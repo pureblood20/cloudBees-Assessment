@@ -9,13 +9,14 @@ import { useLoaderData, Link } from "react-router-dom";
 
 function UserCards() {
   const { userData } = useLoaderData();
+
   return (
     <>
       <Grid container spacing={4}>
-        {userData.map((item) => {
-          const avatar = item.data.avatar_url;
-          const username = item.data.login;
-          const name = item.data.name;
+        {userData.data.map((item) => {
+          const avatar = item.avatar_url;
+          const username = item.login;
+
           return (
             <Grid xs={6} md={3} sm={4} key={item.id}>
               <Card
@@ -46,14 +47,6 @@ function UserCards() {
                 >
                   <Typography gutterBottom variant="h5" component="span">
                     {username}
-                  </Typography>
-                  <Typography
-                    gutterBottom
-                    variant="p"
-                    component="div"
-                    style={{ color: "rgb(148 163 184)" }}
-                  >
-                    {name ? name : username}
                   </Typography>
                 </CardContent>
                 <CardActions>
